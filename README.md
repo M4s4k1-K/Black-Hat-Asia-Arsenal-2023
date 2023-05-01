@@ -56,6 +56,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
+    # Information configured in .env
     'Your DB name': {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "Your DB name",
@@ -66,7 +67,10 @@ DATABASES = {
     }
 }
 ```
-
+6. Run the following command:
+```
+python manage.py inspectdb
+```
 ## Running the Application
 1. Set up the Neo4j database and the ATT&CK DB.
 2. Run the following command to start the development server.

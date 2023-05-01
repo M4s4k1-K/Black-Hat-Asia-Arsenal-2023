@@ -28,6 +28,12 @@ https://neo4j.com/download-center/#community
 1. Start Neo4j and complete the initial setup by accessing localhost:7474.
 1. Place Groups.csv, Techniques.csv, and Tactics.csv into the import directory.
 1. Place make_neo4j_data.ipynb, neo4j.ini, groups_techniques.csv, and matrix.csv into the appropriate directory in your environment and execute make_neo4j_data.ipynb.
+1. Please add the following configuration to your settings.py file
+```
+NEO4J_USERNAME = "Your Username"
+NEO4J_PASSWORD = "Your Password"
+NEO4J_URL = "bolt://localhost:7687"
+```
 
 ### Setting up ATT&CK DB
 1. Create a .env file from the .env.sample.
@@ -43,6 +49,23 @@ docker compose -f docker-compose.local.yaml up -d
 ```
 docker compose -f docker-compose.local.yaml run operation python seed.py
 ```
+5. Please add the following configuration to your settings.py file.
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'Your DB name': {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "Your DB name",
+        "USER": "Your Username",
+        "PASSWORD": "Your Password",
+        "HOST": "localhost",
+        "PORT": "3306"
+    }
+}
+```
 
 ## Running the Application
 1. Set up the Neo4j database and the ATT&CK DB.
@@ -52,5 +75,8 @@ python manage.py runserver
 ```
 
 ## Usage
+
+## Note
+
 
 ## License

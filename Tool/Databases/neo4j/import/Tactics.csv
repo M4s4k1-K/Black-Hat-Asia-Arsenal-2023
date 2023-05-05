@@ -1,0 +1,15 @@
+name,phase
+Reconnaissance,0
+Resource Development,1
+Initial Access,2
+Execution,3
+Persistence,4
+Privilege Escalation,5
+Defense Evasion,6
+Credential Access,7
+Discovery,8
+Lateral Movement,9
+Collection,10
+Command and Control,11
+Exfiltration,12
+Impact,13

@@ -1,0 +1,82 @@
+{% extends './base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Graph</title>
+    <style type="text/css">
+    
+      #visualization{
+        width: 100% !important; 
+        border: 1px solid lightgray;
+      }
+  
+    </style>
+  </head>
+  <body>
+    {% block content %}
+    <h1>Forecasting Visualization</h1>
+    <div style="display: flex;">
+      <div style="display: flex; align-items: center;">
+        <span style="background-color: rgb(4,210,220); border-radius: 50%; padding: 10px;"></span>
+        <span style="margin-left: 10px;">Tactics</span>
+      </div>
+      <div style="display: flex; align-items: center; margin-left: 20px;">
+        <span style="background-color: rgb(249,62,86); border-radius: 50%; padding: 10px;"></span>
+        <span style="margin-left: 10px;">Detected Techniques</span>
+      </div>
+      <div style="display: flex; align-items: center; margin-left: 20px;">
+        <span style="background-color: rgb(245,197,25); border-radius: 50%; padding: 10px;"></span>
+        <span style="margin-left: 10px;">Forecasted Techniques</span>
+      </div>
+    </div>
+    <div id="visualization"></div>
+    
+    <script type="module">
+        var nodes = JSON.parse('{{ nodes | safe }}');
+        var edges = JSON.parse('{{ edges | safe }}');
+
+        var container = document.getElementById('visualization');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+              width: '100%' ,
+              height: '900px',
+            nodes: {
+              shape: "dot",
+              size: 40,
+              font: {
+                size: 25,
+                color: "#000000",
+              },
+              borderWidth: 2,
+            },
+            edges: {
+              width: 2,
+              color: {color: "rgb(105,105,105)"},
+            },
+
+            groups: {
+              tactics: {
+                color: { background: "rgb(4,210,220)", border: "rgb(18,183,191)" },
+              },
+              recommended_techniques: {
+                color: { background: "rgb(245,197,25)", border: "rgb(223,176,12)" },
+              },
+              inputted_techniques: {
+                color: { background: "rgb(249,62,86)", border: "rgb(215,55,75)" },
+              },
+            },
+            
+          };
+
+        var network = new vis.Network(container, data, options);
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+    {% endblock content %}
+    </body>
+    
+</html>

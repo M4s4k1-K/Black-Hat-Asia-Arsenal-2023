@@ -1,0 +1,56 @@
+{% extends './base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Forecasting ATT&CK Flow by Recommendation System based on APT</title>
+</head>
+
+<body>
+  {% block content %}
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">Log Upload (.csv file only)</h5>
+            <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data" style="margin: auto">
+              {% csrf_token %}
+              <div class="input-group">
+                <label for="file">
+                <span class="btn btn-primary">
+                  Choose File
+                <input type="file" class="form-control-file" id="file" name="file" style="display:none">
+                </span>
+              </label>
+              <input type="text" class="form-control" readonly="">
+              </div>
+              <p></p>
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-success">Upload</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.parent().parent().next(':text').val(label);
+});
+</script>
+
+  
+
+{% endblock content %}
+</body>
+
+</html>

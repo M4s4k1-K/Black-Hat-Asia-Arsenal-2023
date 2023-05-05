@@ -1,0 +1,101 @@
+{% extends './base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>attck_recommender</title>
+    
+</head>
+
+<body>
+    {% block content %}
+    <br>
+    <h1 id="result">Search Query of SIEM</h1>
+    <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          
+          <div class="accordion" id="accordionPanelsStayOpenFirst">
+            {% for key, value in queries.items %}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="header{{key.0}}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{key.0}}" aria-expanded="true" aria-controls="collapse{{key.0}}">
+                    <span class="badge bg-secondary">{{key.0}} : {{key.1}}</span>
+                </button>
+              </h2>
+
+              <div id="collapse{{key.0}}" class="accordion-collapse collapse " aria-labelledby="header{{key.0}}">
+                <div class="accordion-body">
+                    <a href="https://attack.mitre.org/techniques/{{key.0}}/" target="_blank">Tehcnique Description</a>
+                    <br>
+
+                        <div class="accordion" id="accordionPanelsStayOpenSecond">
+                          
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="header-siem">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-siem" aria-expanded="true" aria-controls="collapse-siem">
+                                  <span class="badge bg-danger">Atomic Tests</span>
+                              </button>
+                            </h2>
+                            <div id="collapse-siem" class="accordion-collapse collapse " aria-labelledby="header-siem">
+                              <div class="accordion-body">
+                                  {% if value.0 %}
+                                  
+                                      {% for atomics in value.0 %}
+                                      <div class="card card-body">
+                                      {% for line in atomics %}
+                                      <div>{{line}}</div>
+                                      {% endfor %}
+                                      </div>
+                                      
+                                      {% endfor %}
+                                  
+                                  {% else %}
+                                  No atomics
+                                  {% endif %}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="header-atomic">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-atomic" aria-expanded="true" aria-controls="collapse-atomic">
+                                  <span class="badge bg-primary">Search SIEM of Query</span>
+                              </button>
+                            </h2>
+                            <div id="collapse-atomic" class="accordion-collapse collapse " aria-labelledby="header-atomic">
+                              <div class="accordion-body">
+                                  {% if value.1 %}
+                                  {% for siem_queries in value.1 %}
+                                      <div class="card card-body">
+                                        {% for siem_query in siem_queries %}
+                                      <div>{{siem_query}}</div>
+                                      {% endfor %}
+                                      </div>
+                                      
+                                      {% endfor %}
+                                  
+                                  {% else %}
+                                  No queries
+                                  {% endif %}
+                              </div>
+                            </div>
+                          </div>
+                          
+                          
+                        </div>
+                                      
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+      </div>
+    
+    {% endblock content %}
+</body>
+</html>

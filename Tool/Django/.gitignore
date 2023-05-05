@@ -1,0 +1,4 @@
+venv/
+*/neo4j.ini
+*/__pycache__/
+*/db.sqlite3

@@ -1,0 +1,40 @@
+version: '3'
+services:
+  operation:
+    build: ./docker/python
+    container_name: operation
+    working_dir: /code
+    tty: true
+    volumes:
+      - ./code:/code
+      - ./resources:/resources
+    environment:
+      PYTHONPATH: /code
+    env_file:
+      - .env
+  mariadb:
+    image: mariadb:10.9.4
+    container_name: mariadb
+    tty: true
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+  phpmyadmin:
+    image: phpmyadmin:5.2.1-apache
+    container_name: phpmyadmin
+    depends_on:
+      - mariadb
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mariadb
+      - PMA_USER=${MARIADB_USER}
+      - PMA_PASSWORD=${MARIADB_PASSWORD}
+    ports:
+      - "3333:80"
+    volumes:
+      - ./docker/phpmyadmin/sessions:/sessions
+volumes:
+  mysql-data:

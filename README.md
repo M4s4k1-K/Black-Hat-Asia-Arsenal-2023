@@ -1,11 +1,8 @@
 # Forecasting ATT&CK Flow by Recommendation System Based on APT
 ## Description
 This tool is to forecast undetected ATT&CK techniques based on collaborative filtering and graph databases.  
-link here
-Please, check this here for more information.  
-[here](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/blob/main/Black-Asia-Arsenal-2023-Presentation.pdf)
-The algorithm is based on the proposed method in the paper below.  
-[paper](https://ieeexplore.ieee.org/document/10032036)  
+[Documentation of the tool](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/blob/main/Black-Asia-Arsenal-2023-Presentation.pdf) is here.
+The algorithm is based on the proposed method in this [paper](https://ieeexplore.ieee.org/document/10032036).  
 
 ## Prerequisites (Tested Environment)
 - Python 3.10.10

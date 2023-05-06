@@ -83,4 +83,4 @@ python manage.py runserver
 ```
 
 ## How to implement
-[here](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/blob/main/implementation.md)
+[Check implementation method](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/blob/main/implementation.md)

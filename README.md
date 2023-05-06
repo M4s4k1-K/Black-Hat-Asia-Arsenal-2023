@@ -3,9 +3,9 @@
 This tool is to forecast undetected ATT&CK techniques based on collaborative filtering and graph databases.  
 link here
 Please, check this here for more information.  
-
+[here](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/blob/main/Black-Asia-Arsenal-2023-Presentation.pdf)
 The algorithm is based on the proposed method in the paper below.  
-https://ieeexplore.ieee.org/document/10032036  
+[paper](https://ieeexplore.ieee.org/document/10032036)  
 
 ## Prerequisites (Tested Environment)
 - Python 3.10.10
@@ -41,6 +41,12 @@ NEO4J_URL = "bolt://localhost:7687"
 copy .env.sample .env
 ```
 2. Enter your desired values into the .env file.
+```
+# fill in your own values
+MARIADB_USER="Your Username"
+MARIADB_PASSWORD="Your Password"
+MARIADB_DATABASE="Your DB name"
+```
 3. Start the application.
 ```
 docker compose -f docker-compose.local.yaml up -d
@@ -49,7 +55,8 @@ docker compose -f docker-compose.local.yaml up -d
 ```
 docker compose -f docker-compose.local.yaml run operation python seed.py
 ```
-5. Please add the following configuration to your settings.py file.
+5. Please add the following configuration to your settings.py file.  
+NAME, USER, and PASSWORD are set by you in .env.  
 ```
 DATABASES = {
     'default': {
@@ -79,4 +86,4 @@ python manage.py runserver
 ```
 
 ## How to implement
-link here
+[here](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/blob/main/implementation.md)

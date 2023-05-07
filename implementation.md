@@ -17,3 +17,19 @@ Red circle represent detected techniques, yellow circle represent forecasted tec
 Outputs the Seach query of SIME associated with the forecasted ATT&CK Technique
 Splunk is assumed as the SIME to be used.
 Currently, the number of queries available for output is limited. This will be updated in the future.
+
+## Example
+The following [logs](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/tree/main/Tool/Logs_for_Demo) are provided for the demonstration:
+
+- PC01_sysmon_log.csv  
+Sysmon log captured after the attacker's attack.
+- AD_event_log.csv  
+Active Directory event log.
+- AD_sysmon_log.csv  
+Active Directory sysmon log.
+
+
+Upload PC01_sysmon_log.csv to our tool.
+Add both AD_event_log.csv and AD_sysmon_log.csv to Splunk.
+Merge the two logs with the same index name in Splunk.
+Use the outputted SIEM search query for the merged logs.

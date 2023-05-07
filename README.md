@@ -1,6 +1,6 @@
 # Forecasting ATT&CK Flow by Recommendation System Based on APT
 ## Description
-This tool is to forecast undetected ATT&CK techniques based on collaborative filtering and graph databases.It assists in log analysis for the SOC.
+This tool is to forecast undetected ATT&CK techniques based on collaborative filtering and graph databases. It assists in log analysis for the SOC.
 [Documentation of the tool](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/blob/main/Black-Asia-Arsenal-2023-Presentation.pdf) is here.
 The algorithm is based on the proposed method in this [paper](https://ieeexplore.ieee.org/document/10032036).  
 
@@ -8,7 +8,7 @@ The algorithm is based on the proposed method in this [paper](https://ieeexplore
 - Python 3.10.10
 - Django 4.1.7
 - Neo4j 4.4.9
-- Java SE 11 or later
+- Java SE 11 (later version my be preferable)
 - Docker 20.10.22
 - Docker Compose 2.15.1
 ## Getting Started
@@ -22,9 +22,9 @@ pip install -r requirements.txt
 1. Download Neo4j (version 4.X) from the following link:
 https://neo4j.com/download-center/#community
 1. Start Neo4j and complete the initial setup by accessing localhost:7474.
-1. Place "Groups.csv", "Techniques.csv", and "Tactics.csv" into the import directory.
+1. Place "Groups.csv", "Techniques.csv", and "Tactics.csv" into the neo4j import directory.
 1. Place "make_neo4j_data.ipynb", "neo4j.ini", "groups_techniques.csv", and "matrix.csv" into the appropriate directory in your environment and execute "make_neo4j_data.ipynb".
-Edit neo4j.ini to the values you set in the initial setup.
+Edit "neo4j.ini" to the values you set in the initial setup.
 1. Please add the following configuration to your "settings.py" file in Django.
 ```
 NEO4J_USERNAME = "Your Username"
@@ -52,8 +52,7 @@ docker compose -f docker-compose.local.yaml up -d
 ```
 docker compose -f docker-compose.local.yaml run operation python seed.py
 ```
-5. Please add the following configuration to your settings.py file in Django.  
-NAME, USER, and PASSWORD are set by you in .env.  
+5. Please add the following configuration to your settings.py file in Django. NAME, USER, and PASSWORD are set by you in .env.  
 ```
 DATABASES = {
     'default': {

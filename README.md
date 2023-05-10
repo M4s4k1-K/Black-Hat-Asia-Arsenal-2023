@@ -2,7 +2,7 @@
 ## Description
 This tool is to forecast undetected ATT&CK techniques based on collaborative filtering and graph databases. It assists in log analysis for the SOC.
 [Documentation of the tool](https://github.com/M4s4k1-K/Black-Hat-Asia-Arsenal-2023/blob/main/Black-Asia-Arsenal-2023-Presentation.pdf) is here.
-The algorithm is based on the proposed method in this [paper](https://ieeexplore.ieee.org/document/10032036).  
+The algorithm is based on a modified version of the proposed method in this [paper](https://ieeexplore.ieee.org/document/10032036).  
 
 ## Prerequisites (Tested Environment)
 - Python 3.10.10
